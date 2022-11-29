@@ -2,9 +2,9 @@
 
 Welcome to Vault (link: https://eos.defibox.io/vault/) documentation!
 This document is divided into the following sections:
-About a quick overview of the Vault program.
-A user guide explaining to DeFi projects how to use the Vault system.
-Contract Audit Report
+- About a quick overview of the Vault program.
+- A user guide explaining to DeFi projects how to use the Vault system.
+- Contract Audit Report
 
 
 **About Vault**
@@ -60,5 +60,64 @@ The Income method does not have any parameters, the logic of the contract is fix
 
 
 **Contract audit report**
+
+https://www.certik.com/projects/defibox
+
+
+
+**介绍**
+
+欢迎使用Vault(链接：https://eos.defibox.io/vault/)文档！
+本文档分为以下部分：
+- 关于 Vault提供了 Vault 程序的快速概览。
+- 用户指南向 DeFi 项目解释了如何使用 Vault系统。
+- 合约审计报告
+
+**关于Vault**
+Vault協議是Defibox推出的首個單幣無損收益協議，用戶存入代幣可賺取對應的代幣收益，資產可靈活存取且鏈上公開透明。 Valut的收益主要來源於Defibox協議收入、Yield+獎勵、節點收入、REX收入等，同時為了提高資金的使用率，協議將發放代表存幣憑證sToken，該憑證是標準的EOS代幣，支持和其他協議進行組合使用獲得更多收益,例：目前借贷已支持的sEOS的存款功能，USN已支持的做为抵押物生成USN功能。
+本文档侧重于为用户和开发人员提供相关的、可访问的指南。有关 vault系统的深入探索和讨论，请参阅需求设计文档：
+
+
+**用户指南：**
+存入EOS获取收益：transfer方法
+将EOS存入vault.defi合约，如下：
+
+***cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest***
+
+转账的方法，它需要三个参数：
+From：存入的用户名称
+To:存入的合约地址,固定vault.defi
+Quantity:存入的EOS数量，需要按EOS的币种精度进行格式化
+Memo：是转账的备注，可为空，没有逻辑
+存入成功后，vault.defi会根据当前的sEOS与EOS的兑换率，发行对应数量的sEOS给用户，用户可在自己账号上查询stoken.defi(sEOS)，同时存入的EOS会自动买入REX，开始享受REX的收益
+
+
+**取回EOS：**
+第一步，先将sEOS转vault.defi，发送需要提取的指令
+
+***cleos push action   stoken.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest***
+
+转账成功后，会在vault.defi合约的release表生成一笔提取记录，该表记录的三个字段：
+Quantity:提取的sEOS数量
+Rate:记录提取时sEOS与EOS的兑换率，5天到期后按该汇率结算需要转账的EOS按数量(扣除提取手续费)
+Time:因提取后，需要有5天的解锁期，故在5天以后才是真正的提取完成，将sEOS换回EOS转回用户
+
+第二步，5天解锁到期后调用release方法提取EOS
+release方法只有一个参数owner，即到期需要提取的用户，如:
+
+***cleos  push action  vault.defi release '["testtesttest"]' -p testtesttest***
+
+提取会的EOS会扣除相应的提取手续费返还用户，解锁到期提取可用户自己提取，目前系统后台统一触发自动提取返回用户
+
+
+**Vault池子注入奖励：income方法**
+award.defi账号囤积了defibox的协议收入、节点收入、Y+奖励，每隔10分钟，系统自动调用income方法，从award.defi将奖励币种注入vault.defi，任何用户都可以调用该方法income，如下：
+
+***cleos  push action vault.defi income '[]' -p  testtesttest***
+
+Income方法没有任何参数，合约固定的逻辑，间隔10分钟转账的数量计算逻辑为: 根据vault.defi合约collaterals表配置的EOS币种的income_ratio/10000 * award.defi的当前EOS余额=10分钟需要注入vault.defi的EOS数量，如果中间10分钟没有执行，再下次执行时会进行补转
+
+
+**合约审计报告**
 
 https://www.certik.com/projects/defibox
