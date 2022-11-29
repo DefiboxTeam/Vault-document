@@ -15,11 +15,10 @@ This documentation focuses on providing relevant, accessible guidance for users 
 
 **User Guide:**
 
-Deposit EOS for yield: transfer method
+## ACTION `transfer`
+>Deposit EOS in vault.defi:
 
-
-**Deposit EOS in vault.defi:**
-
+### Example
 ```bash
 cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
 ```
@@ -29,26 +28,39 @@ The transfer method, which requires three parameters:
 - `to` - Deposited contract address, fixed vault.defi
 - `quantity` -The amount of EOS deposited, which needs to be formatted according to the token precision of EOS
 - `memo` -It is the remark of the transfer, which can be empty and has no logic
-After the deposit is successful, vault.defi will issue a corresponding amount of sEOS to the user based on the current exchange rate between sEOS and EOS. The user can query the token.defi(sEOS) on their account, and the deposited EOS will automatically buy REX, start enjoying the benefits of REX.
+
+>After the deposit is successful, vault.defi will issue a corresponding amount of sEOS to the user based on the current exchange rate between sEOS and EOS. The user can query the token.defi(sEOS) on their account, and the deposited EOS will automatically buy REX, start enjoying the benefits of REX.
 
 
 **Withdraw EOS:**
 
 The first step is to transfer sEOS to vault.defi and send the command for withdraw
+## ACTION `transfer`
+>sEOS transfer vault.defi:
 
+### Example
 ```bash
-cleos push action token.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest
+cleos push action stoken.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest
 ```
-After the transfer is successful, a withdrawal record will be generated in the release table of the vault.defi contract. 
 
-There are three fields in this table record:
-Quantity: The amount of sEOS withdrawn
-Rate: Record the exchange rate between sEOS and EOS at the time of withdrawal. After 5 days, the amount of EOS that needs to be transferred (deducting the withdrawal fee) by the recorded exchange rate 
-Time: After the withdrawal, there is a 5-day unlock period, so the withdrawal will be completed after 5 days, and the sEOS will be exchanged back to EOS and transferred back to the user
+>After the transfer is successful, a withdrawal record will be generated in the release table of the vault.defi contract. 
+
+## TABLE `release`
+
+### params
+
+- `quantity` - The amount of sEOS withdrawn
+- `rate` - Record the exchange rate between sEOS and EOS at the time of withdrawal. After 5 days, the amount of EOS that needs to be transferred (deducting the withdrawal fee) by the recorded exchange rate 
+- `time` - After the withdrawal, there is a 5-day unlock period, so the withdrawal will be completed after 5 days, and the sEOS will be exchanged back to EOS and transferred back to the user
 
 The second step is to use the release method to withdraw EOS after the 5-day unlock expires
-The release method has only one parameter owner, which is for the user who needs to withdraw when it expires:
 
+## ACTION `release`
+
+### params
+- `owner` - which is for the user who needs to withdraw when it expires
+- 
+### Example
 ```bash
 cleos push action vault.defi release '["testtesttest"]' -p testtesttest
 ```
@@ -84,9 +96,9 @@ Vault協議是Defibox推出的首個單幣無損收益協議，用戶存入代�
 
 
 **用户指南：**
-存入EOS获取收益：transfer方法
+## ACTION `transfer`
 将EOS存入vault.defi合约，如下：
-
+###例:
 ```bash
 cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
 ```
@@ -104,13 +116,23 @@ cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.d
 ```bash
 cleos push action   stoken.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest
 ```
-转账成功后，会在vault.defi合约的release表生成一笔提取记录，该表记录的三个字段：
-Quantity:提取的sEOS数量
-Rate:记录提取时sEOS与EOS的兑换率，5天到期后按该汇率结算需要转账的EOS按数量(扣除提取手续费)
-Time:因提取后，需要有5天的解锁期，故在5天以后才是真正的提取完成，将sEOS换回EOS转回用户
+转账成功后，会在vault.defi合约的release表生成一笔提取记录：
+## TABLE `release`
+
+### params
+
+- `quantity` - 提取的sEOS数量
+- `rate` - 记录提取时sEOS与EOS的兑换率，5天到期后按该汇率结算需要转账的EOS按数量(扣除提取手续费)
+- `time` - 因提取后，需要有5天的解锁期，故在5天以后才是真正的提取完成，将sEOS换回EOS转回用户
 
 第二步，5天解锁到期后调用release方法提取EOS
-release方法只有一个参数owner，即到期需要提取的用户，如:
+
+## ACTION `release`
+
+### params
+- `owner` - 需要提取的用户
+
+### Example
 
 ```bash
 cleos  push action  vault.defi release '["testtesttest"]' -p testtesttest
