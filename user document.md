@@ -25,6 +25,9 @@ The transfer method, which requires three parameters:
 ### select user sEOS balance:
 ```bash
 cleos  get table stoken.defi testtesttest accounts
+{
+   "balance": "229862.0779 SEOS"
+}
 ```
 
 
@@ -49,6 +52,15 @@ cleos push action stoken.defi transfer '{"from": "testtesttest ","to":"vault.def
 - `rate` - Record the exchange rate between sEOS and EOS at the time of withdrawal. After 5 days, the amount of EOS that needs to be transferred (deducting the withdrawal fee) by the recorded exchange rate 
 - `time` - After the withdrawal, there is a 5-day unlock period, so the withdrawal will be completed after 5 days, and the sEOS will be exchanged back to EOS and transferred back to the user
 
+### Example
+```bash
+{
+   "id": 15,
+   "quantity": "2.0000 SEOS",
+   "rate": 100091987,
+   "time": "2022-12-03T03:37:49.500"
+}
+```
 The second step is to use the release method to withdraw EOS after the 5-day unlock expires
 
 ## ACTION `release`
@@ -101,6 +113,9 @@ cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.d
 ### 可查询用户的sEOS余额
 ```bash
 cleos  get table stoken.defi testtesttest accounts
+{
+   "balance": "229862.0779 SEOS"
+}
 ```
 
 **取回EOS：**
@@ -117,6 +132,16 @@ cleos push action   stoken.defi transfer '{"from": "testtesttest ","to":"vault.d
 - `quantity` - 提取的sEOS数量
 - `rate` - 记录提取时sEOS与EOS的兑换率，5天到期后按该汇率结算需要转账的EOS按数量(扣除提取手续费)
 - `time` - 因提取后，需要有5天的解锁期，故在5天以后才是真正的提取完成，将sEOS换回EOS转回用户
+
+### Example
+```bash
+{
+   "id": 15,
+   "quantity": "2.0000 SEOS",
+   "rate": 100091987,
+   "time": "2022-12-03T03:37:49.500"
+}
+```
 
 第二步，5天解锁到期后调用release方法提取EOS
 
