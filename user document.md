@@ -20,8 +20,9 @@ Deposit EOS for yield: transfer method
 
 **Deposit EOS in vault.defi:**
 
-***cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest***
-
+```bash
+cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
+```
 The transfer method, which requires three parameters:
 From: The name of the deposited user
 To: Deposited contract address, fixed vault.defi
@@ -34,8 +35,9 @@ After the deposit is successful, vault.defi will issue a corresponding amount of
 
 The first step is to transfer sEOS to vault.defi and send the command for withdraw
 
-***cleos push action token.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest***
-
+```bash
+cleos push action token.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest
+```
 After the transfer is successful, a withdrawal record will be generated in the release table of the vault.defi contract. 
 
 There are three fields in this table record:
@@ -47,7 +49,7 @@ The second step is to use the release method to withdraw EOS after the 5-day unl
 The release method has only one parameter owner, which is for the user who needs to withdraw when it expires:
 
 ```bash
-cleos push action vault.defi release '["testtesttest"]' -p testtesttest***
+cleos push action vault.defi release '["testtesttest"]' -p testtesttest
 ```
 The EOS in the withdrawal meeting will be deducted from the corresponding withdrawal fee and returned to the user. The user can withdraw it by himself when the unlock expires. At present, the system background triggers the automatic withdrawal and returns it to the user
 
@@ -56,7 +58,7 @@ The EOS in the withdrawal meeting will be deducted from the corresponding withdr
 The award.defi account preserves Defibox’s protocol income, BP income, and Y+ rewards. Every 10 minutes, the system automatically calls the income method to inject the reward token from award.defi into vault.defi. Any user can call this method income, as follows:
 
 ```bash
-cleos push action vault.defi income '[]' -p testtesttest***
+cleos push action vault.defi income '[]' -p testtesttest
 ```
 The Income method does not have any parameters, the logic of the contract is fixed, and the calculation logic of the amount transferred at intervals of 10 minutes is: income_ratio/10000 of the EOS token configured according to the collaterals table of the vault.defi contract * the current EOS balance of award.defi = 10 minutes to inject EOS amount to vault.defi, if it is not executed in the interval of 10 minutes, it will be re-rolled in next execution
 
@@ -84,8 +86,9 @@ Vault協議是Defibox推出的首個單幣無損收益協議，用戶存入代�
 存入EOS获取收益：transfer方法
 将EOS存入vault.defi合约，如下：
 
-***cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest***
-
+```bash
+cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
+```
 转账的方法，它需要三个参数：
 From：存入的用户名称
 To:存入的合约地址,固定vault.defi
@@ -97,8 +100,9 @@ Memo：是转账的备注，可为空，没有逻辑
 **取回EOS：**
 第一步，先将sEOS转vault.defi，发送需要提取的指令
 
-***cleos push action   stoken.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest***
-
+```bash
+cleos push action   stoken.defi transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 SEOS","memo":""}' -p testtesttest
+```
 转账成功后，会在vault.defi合约的release表生成一笔提取记录，该表记录的三个字段：
 Quantity:提取的sEOS数量
 Rate:记录提取时sEOS与EOS的兑换率，5天到期后按该汇率结算需要转账的EOS按数量(扣除提取手续费)
@@ -107,7 +111,9 @@ Time:因提取后，需要有5天的解锁期，故在5天以后才是真正的�
 第二步，5天解锁到期后调用release方法提取EOS
 release方法只有一个参数owner，即到期需要提取的用户，如:
 
-***cleos  push action  vault.defi release '["testtesttest"]' -p testtesttest***
+```bash
+cleos  push action  vault.defi release '["testtesttest"]' -p testtesttest
+```
 
 提取会的EOS会扣除相应的提取手续费返还用户，解锁到期提取可用户自己提取，目前系统后台统一触发自动提取返回用户
 
@@ -115,8 +121,9 @@ release方法只有一个参数owner，即到期需要提取的用户，如:
 **Vault池子注入奖励：income方法**
 award.defi账号囤积了defibox的协议收入、节点收入、Y+奖励，每隔10分钟，系统自动调用income方法，从award.defi将奖励币种注入vault.defi，任何用户都可以调用该方法income，如下：
 
-***cleos  push action vault.defi income '[]' -p  testtesttest***
-
+```bash
+cleos  push action vault.defi income '[]' -p  testtesttest
+```
 Income方法没有任何参数，合约固定的逻辑，间隔10分钟转账的数量计算逻辑为: 根据vault.defi合约collaterals表配置的EOS币种的income_ratio/10000 * award.defi的当前EOS余额=10分钟需要注入vault.defi的EOS数量，如果中间10分钟没有执行，再下次执行时会进行补转
 
 
