@@ -22,8 +22,7 @@ The transfer method, which requires three parameters:
 
 >After the deposit is successful, vault.defi will issue a corresponding amount of sEOS to the user based on the current exchange rate between sEOS and EOS. The user can query the token.defi(sEOS) on their account, and the deposited EOS will automatically buy REX, start enjoying the benefits of REX.
 
->select user sEOS balance:
-### Example
+### select user sEOS balance:
 ```bash
 cleos  get table stoken.defi testtesttest accounts
 ```
@@ -98,8 +97,7 @@ cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.d
 - `memo` -是转账的备注，可为空，没有逻辑
 存入成功后，vault.defi会根据当前的sEOS与EOS的兑换率，发行对应数量的sEOS给用户，用户可在自己账号上查询stoken.defi(sEOS)，同时存入的EOS会自动买入REX，开始享受REX的收益
 
->可查询用户的sEOS余额
-### 例
+### 可查询用户的sEOS余额
 ```bash
 cleos  get table stoken.defi testtesttest accounts
 ```
