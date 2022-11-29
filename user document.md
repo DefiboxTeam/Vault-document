@@ -79,7 +79,8 @@ https://www.certik.com/projects/defibox
 
 
 **关于Vault**
-Vault協議是Defibox推出的首個單幣無損收益協議(https://eos.defibox.io/vault/)，用戶存入代幣可賺取對應的代幣收益，資產可靈活存取且鏈上公開透明。 Valut的收益主要來源於Defibox協議收入、Yield+獎勵、節點收入、REX收入等，同時為了提高資金的使用率，協議將發放代表存幣憑證sToken，該憑證是標準的EOS代幣，支持和其他協議進行組合使用獲得更多收益,例：目前借贷已支持的sEOS的存款功能，USN已支持的做为抵押物生成USN功能。
+
+Vault協議是Defibox推出的首個單幣無損收益協議(https://eos.defibox.io/vault/)， 用戶存入代幣可賺取對應的代幣收益，資產可靈活存取且鏈上公開透明。 Valut的收益主要來源於Defibox協議收入、Yield+獎勵、節點收入、REX收入等，同時為了提高資金的使用率，協議將發放代表存幣憑證sToken，該憑證是標準的EOS代幣，支持和其他協議進行組合使用獲得更多收益,例：目前借贷已支持的sEOS的存款功能，USN已支持的做为抵押物生成USN功能。
 本文档侧重于为用户和开发人员提供相关的、可访问的指南。有关 vault系统的深入探索和讨论，请参阅需求设计文档：
 
 
