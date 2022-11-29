@@ -1,15 +1,6 @@
-**Introduction**
-
-Welcome to Vault (link: https://eos.defibox.io/vault/) documentation!
-This document is divided into the following sections:
-- About a quick overview of the Vault program.
-- A user guide explaining to DeFi projects how to use the Vault system.
-- Contract Audit Report
-
-
 **About Vault**
 
-The Vault protocol is the first single-token lossless yield protocol launched by Defibox. Users can earn corresponding token income by depositing tokens. Assets can be accessed flexibly and the chain is open and transparent. Vault income mainly comes from Defibox protocol income, Yield+ rewards, node income, REX income, etc. At the same time, in order to improve the utilization rate of funds, the protocol will issue sToken representing the deposit certificate, which is a standard EOS token, and supports and other protocol use in combination to get more benefits, for example: the deposit of sEOS is supported by lending, and the generating USN as collateral is supported by USN.
+The Vault protocol is the first single-token lossless yield protocol launched by Defibox(https://eos.defibox.io/vault/). Users can earn corresponding token income by depositing tokens. Assets can be accessed flexibly and the chain is open and transparent. Vault income mainly comes from Defibox protocol income, Yield+ rewards, node income, REX income, etc. At the same time, in order to improve the utilization rate of funds, the protocol will issue sToken representing the deposit certificate, which is a standard EOS token, and supports and other protocol use in combination to get more benefits, for example: the deposit of sEOS is supported by lending, and the generating USN as collateral is supported by USN.
 This documentation focuses on providing relevant, accessible guidance for users and developers. For an in-depth exploration and discussion of the vault system, see the requirements design document:
 
 
@@ -59,7 +50,7 @@ The second step is to use the release method to withdraw EOS after the 5-day unl
 
 ### params
 - `owner` - which is for the user who needs to withdraw when it expires
-- 
+
 ### Example
 ```bash
 cleos push action vault.defi release '["testtesttest"]' -p testtesttest
@@ -82,16 +73,8 @@ https://www.certik.com/projects/defibox
 
 
 
-**介绍**
-
-欢迎使用Vault(链接：https://eos.defibox.io/vault/)文档！
-本文档分为以下部分：
-- 关于 Vault提供了 Vault 程序的快速概览。
-- 用户指南向 DeFi 项目解释了如何使用 Vault系统。
-- 合约审计报告
-
 **关于Vault**
-Vault協議是Defibox推出的首個單幣無損收益協議，用戶存入代幣可賺取對應的代幣收益，資產可靈活存取且鏈上公開透明。 Valut的收益主要來源於Defibox協議收入、Yield+獎勵、節點收入、REX收入等，同時為了提高資金的使用率，協議將發放代表存幣憑證sToken，該憑證是標準的EOS代幣，支持和其他協議進行組合使用獲得更多收益,例：目前借贷已支持的sEOS的存款功能，USN已支持的做为抵押物生成USN功能。
+Vault協議是Defibox推出的首個單幣無損收益協議(https://eos.defibox.io/vault/)，用戶存入代幣可賺取對應的代幣收益，資產可靈活存取且鏈上公開透明。 Valut的收益主要來源於Defibox協議收入、Yield+獎勵、節點收入、REX收入等，同時為了提高資金的使用率，協議將發放代表存幣憑證sToken，該憑證是標準的EOS代幣，支持和其他協議進行組合使用獲得更多收益,例：目前借贷已支持的sEOS的存款功能，USN已支持的做为抵押物生成USN功能。
 本文档侧重于为用户和开发人员提供相关的、可访问的指南。有关 vault系统的深入探索和讨论，请参阅需求设计文档：
 
 
