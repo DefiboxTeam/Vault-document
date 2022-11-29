@@ -46,16 +46,18 @@ Time: After the withdrawal, there is a 5-day unlock period, so the withdrawal wi
 The second step is to use the release method to withdraw EOS after the 5-day unlock expires
 The release method has only one parameter owner, which is for the user who needs to withdraw when it expires:
 
-***cleos push action vault.defi release '["testtesttest"]' -p testtesttest***
-
+```bash
+cleos push action vault.defi release '["testtesttest"]' -p testtesttest***
+```
 The EOS in the withdrawal meeting will be deducted from the corresponding withdrawal fee and returned to the user. The user can withdraw it by himself when the unlock expires. At present, the system background triggers the automatic withdrawal and returns it to the user
 
 
 **Vault pool reward injection: income method**
 The award.defi account preserves Defibox’s protocol income, BP income, and Y+ rewards. Every 10 minutes, the system automatically calls the income method to inject the reward token from award.defi into vault.defi. Any user can call this method income, as follows:
 
-***cleos push action vault.defi income '[]' -p testtesttest***
-
+```bash
+cleos push action vault.defi income '[]' -p testtesttest***
+```
 The Income method does not have any parameters, the logic of the contract is fixed, and the calculation logic of the amount transferred at intervals of 10 minutes is: income_ratio/10000 of the EOS token configured according to the collaterals table of the vault.defi contract * the current EOS balance of award.defi = 10 minutes to inject EOS amount to vault.defi, if it is not executed in the interval of 10 minutes, it will be re-rolled in next execution
 
 
