@@ -1,4 +1,4 @@
-Protocol Design - Definitions (EN/KO/CN)
+**Protocol Design - Definitions (EN/KO/CN)**
 
 1. Deposit certificate sEOS (interest-bearing token) sEOS exchange rate = (EOS value of REX + EOS quantity that not buying REX) / number of SEOS issued
 
@@ -15,7 +15,7 @@ The initial exchange rate is 1EOS=1sEOS
 
 ---
 
-金库协议定义（英/中/韩）
+**金库协议定义（英/中/韩）**
 
 1. 存币凭证sEOS（带息代币） sEOS汇率=(REX的EOS价值 + 未买REX的EOS数量 ）/SEOS发行数量 
 初始汇率为1EOS=1sEOS
@@ -30,7 +30,7 @@ The initial exchange rate is 1EOS=1sEOS
 
 ---
 
-Vault프로토콜 디자인 - 정의(EN/KO/CN)
+**Vault프로토콜 디자인 - 정의(EN/KO/CN)**
 
 1. 보증금 sEOS(이자부 토큰) sEOS 환율 = (REX의 EOS 가치 + REX를 구매하지 않은 EOS 수량) / 발행된 SEOS 수
 
