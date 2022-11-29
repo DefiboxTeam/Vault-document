@@ -24,10 +24,11 @@ Deposit EOS for yield: transfer method
 cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
 ```
 The transfer method, which requires three parameters:
-From: The name of the deposited user
-To: Deposited contract address, fixed vault.defi
-Quantity: The amount of EOS deposited, which needs to be formatted according to the token precision of EOS
-Memo: It is the remark of the transfer, which can be empty and has no logic
+
+- `from` -The name of the deposited user
+- `to` - Deposited contract address, fixed vault.defi
+- `quantity` -The amount of EOS deposited, which needs to be formatted according to the token precision of EOS
+- `memo` -It is the remark of the transfer, which can be empty and has no logic
 After the deposit is successful, vault.defi will issue a corresponding amount of sEOS to the user based on the current exchange rate between sEOS and EOS. The user can query the token.defi(sEOS) on their account, and the deposited EOS will automatically buy REX, start enjoying the benefits of REX.
 
 
@@ -90,10 +91,10 @@ Vault協議是Defibox推出的首個單幣無損收益協議，用戶存入代�
 cleos push action   eosio.token transfer '{"from": "testtesttest ","to":"vault.defi","quantity":"200.0000 EOS","memo":""}' -p testtesttest
 ```
 转账的方法，它需要三个参数：
-From：存入的用户名称
-To:存入的合约地址,固定vault.defi
-Quantity:存入的EOS数量，需要按EOS的币种精度进行格式化
-Memo：是转账的备注，可为空，没有逻辑
+- `from` -存入的用户名称
+- `to` -存入的合约地址,固定vault.defi
+- `quantity` -存入的EOS数量，需要按EOS的币种精度进行格式化
+- `memo` -是转账的备注，可为空，没有逻辑
 存入成功后，vault.defi会根据当前的sEOS与EOS的兑换率，发行对应数量的sEOS给用户，用户可在自己账号上查询stoken.defi(sEOS)，同时存入的EOS会自动买入REX，开始享受REX的收益
 
 
