@@ -1,3 +1,6 @@
+![image](https://user-images.githubusercontent.com/93515916/222070187-1d7bc527-2886-4465-b5ff-3222c2c75092.png)
+
+
 **Protocol Design - Definitions (EN/KO/CN)**
 
 1. Deposit certificate sEOS (interest-bearing token) sEOS exchange rate = (EOS value of REX + EOS quantity that not buying REX) / number of SEOS issued
